@@ -93,7 +93,10 @@ blockquote p:last-child {
 /* Full size background image */
 html, #container, .inner { background-color:transparent;}
 html {
-  background:url(background.jpg) center center no-repeat fixed;
+  background:url(C2301_Mellado_González_yellow.png) center center no-repeat fixed;
+  /* background:url(C2301_Mellado_González_default.png) center center no-repeat fixed; */
+  /* background:url(ftle.png) center center no-repeat fixed; */
+  /* background:url(background.jpg) center center no-repeat fixed; */
   background-size:cover;
 }
 body {
@@ -129,7 +132,7 @@ ul.main-menu li a:hover {
 }
 ul.main-menu li a.active {
   color:#FFFFFF;
-  border-bottom-color:#EF6D3D;
+  border-bottom-color:#3dddef;
 }
 
 /* Utility classes */
