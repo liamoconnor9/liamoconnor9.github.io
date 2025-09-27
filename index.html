@@ -77,12 +77,13 @@
               <!-- As an NSF Graduate Research Fellow, I have the freedom to pursue research driven by curiosity and creativity. -->
               <!-- <br><br> -->
 
-              Explore the navigation menu above to learn more about my background, expertise, and the academic projects I’ve worked on.
+              Explore the navigation menu above to learn more about me, my expertise, and the academic projects I’ve worked on.
               <!-- My research is focused on using physics-based simulations Astrophysical -->
             </p>
           </div>
           
           <div id="juggling" class="content-region hide">
+            <h2>:^)</h2>
             <div style="text-align:center;">
               <video autoplay muted loop playsinline preload="auto" controls width="300">
                 <source src="juggle.mp4" type="video/mp4">
@@ -91,7 +92,21 @@
     
             <!-- <h2>About</h2> -->
             <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
+              <br> 
+              My juggling journey began over a decade ago at the University of Colorado Boulder, where I first caught the juggling bug from someone in my dorm. 
+              Since then, I’ve been entirely self-taught, never taking formal lessons and only recently joining the 
+              <a href="https://www.jugglingedge.com/club.php?ClubID=1362">Chicago Juggling Club</a>.
+              I’m currently “fluent” with five balls and four clubs (shown above).
+              I especially enjoy juggling at concerts and in public spaces, where it becomes both a personal challenge and a way to spread the joy. 
+              <br> 
+              <br> 
+              
+              Juggling taps into the dynamic part of my mind while sharpening my focus and creativity. 
+              
+
+              Throughout this journey, I've learned that the only way to improve is to make mistakes.
+              In these ways, juggling has helped me maintain balance throughout life and graduate school.
+
             </p>
         
           </div>
@@ -102,37 +117,39 @@
           class="content-region hide">
             <h2>Background</h2>
             <p>
-              In the cores of many stars and planets, thermal energy is created via nuclear fusion and solidification. 
-              To maintain thermal equilibrium, buoyancy-driven convection transfers heat radially through the stellar/planetary interior toward the surface. 
-              Physics-based simulations help us understand how convective flows influence other processes such as magnetic fields and plate tectonics (on Earth).
+              Convection is a fundamental process in natural fluid systems: hot material
+              rises, cool material sinks, and large-scale overturning currents develop that
+              redistribute heat and momentum. These motions drive atmospheric circulation
+              and ocean currents on Earth, mix the molten interiors of planets, and
+              energy transport in stellar interiors. Understanding convection is essential for building models of planetary and stellar structure, and it also provides the fluid motions that can give rise to magnetic dynamos.
             </p>
             
             <h2>Problem</h2>
           <p>
             Convection simulations are notoriously computationally expensive. 
-            Consider the simplified Rayleigh–Benard convection system given by
+            Consider the simplified Rayleigh–Bénard convection system given by
 
-            \[     \nabla \cdot \vec{u} = 0 \]
-            \[\frac{\partial \vec{u}}{\partial t} + \vec{u} \cdot \nabla \vec{u} = - \nabla p + T \hat{z} + \sqrt{\frac{\Pr}{\rm{Ra}}} \nabla^2 \vec{u}
+            \[     \nabla \cdot \mathbf{u} = 0 \]
+            \[\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u} = - \nabla p + T \mathbf{\hat{z}} + \sqrt{\frac{\Pr}{\rm{Ra}}} \nabla^2 \mathbf{u}
             \]
-            \[\frac{\partial T}{\partial t} + \vec{u} \cdot \nabla T = \frac{1}{\sqrt{\Pr \rm{Ra}}} \nabla^2 T 
+            \[\frac{\partial T}{\partial t} + \mathbf{u} \cdot \nabla T = \frac{1}{\sqrt{\Pr \rm{Ra}}} \nabla^2 T 
          \]
 
-            where \( \vec{u} \) and \( T \) respectively denote the fluid's velocity and temperature.
+            where \( \mathbf{u} \) and \( T \) respectively denote the fluid's velocity and temperature.
             The Rayleigh number (Ra) sets the convective strength while the Prandtl number (Pr) is an intrinsic property of a given fluid.
-            In astrophysical and geophysical systems, Rayleigh numbers often exceed \(10^{20}\) whereas direct numerical simulations (DNS) of the Rayleigh–Benard system can not exceed \( \rm{Ra}\sim10^{12} \) due to resolution requirements. 
+            In astrophysical and geophysical systems, Rayleigh numbers often exceed \(10^{20}\) whereas direct numerical simulations (DNS) of the Rayleigh–Bénard system can not exceed \( \rm{Ra}\sim10^{12} \) due to resolution requirements. 
             To illustrate this difficulty, 
-            <a href="https://www.youtube.com/watch?v=klntYmQtyE4&t=26s">here's a simulation </a> at \( \rm{Ra}=10^{11}\).
-            My goal for this project was to develop a reduced model for Rayleigh–Benard convection which could be implemented at high Rayleigh number while avoiding intensive computation.
+            <a href="https://www.youtube.com/watch?v=klntYmQtyE4&t=26s">here's a simulation </a> by the Dedalus group run at \( \rm{Ra}=10^{11}\).
+            My goal for this project was to develop a reduced model for Rayleigh–Bénard convection which could be implemented at high Rayleigh number while avoiding intensive computation.
           </p>
           <h2>Solution</h2>
         <p>
           We can reduce the dimensionality of (and thereby simplify) the convection problem by making the quasilinear approximation.
           To construct a quasilinear model, consider the temperature's horizontal average \( \overline{T}(z) \) which only depends on the vertical coordinate \( z \). 
           The original temperature field \( T \) can then be expressed as \( T(x, z, t) = \overline{T}(z) + T'(x, z, t) \) where \( T' \) is called the temperature perturbation.
-          Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \vec{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
+          Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \mathbf{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
           To approximate an equilibrated convective system, we apply the "marginal stability" constraint such that the maximum eigenvalue \( \rm{max}\{ \sigma \} = 0 \).
-          Finally, we iteratively update \( \overline{T} \) according to a quasilinear equation involving the linear perturbations (\( T' \) and \( \vec{u}' \)) until convergence.
+          Finally, we iteratively update \( \overline{T} \) according to a quasilinear equation involving the linear perturbations (\( T' \) and \( \mathbf{u}' \)) until convergence.
           The converged \( \overline{T} \) is called a Marginally Stable Thermal Equilibrium (MSTE).
         </p>
           
@@ -140,9 +157,9 @@
         <p>
           To construct a quasilinear model, consider the temperature's horizontal average \( \overline{T}(z) \) which only depends on the vertical coordinate \( z \). 
           The original temperature field \( T \) can then be expressed as \( T(x, z, t) = \overline{T}(z) + T'(x, z, t) \) where \( T' \) is called the temperature perturbation.
-          Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \vec{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
+          Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \mathbf{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
           To approximate an equilibrated convective system, we apply the "marginal stability" constraint such that the maximum eigenvalue \( \rm{max}\{ \sigma \} = 0 \).
-          Finally, we iteratively update \( \overline{T} \) using a quasilinear equation involving the linear perturbations (\( T' \) and \( \vec{u}' \)) until convergence.
+          Finally, we iteratively update \( \overline{T} \) using a quasilinear equation involving the linear perturbations (\( T' \) and \( \mathbf{u}' \)) until convergence.
           The converged \( \overline{T} \) is called a Marginally Stable Thermal Equilibrium (MSTE).
           
           <!-- This is known as "marginal " -->
@@ -213,10 +230,64 @@
           </div>
           
           <div id="dynamos" class="content-region hide">
-            <h2>Dynamos</h2>
+            <!-- <h2>Dynamos</h2> -->
+
+            <h3>Background</h3>
             <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
+              Magnetic fields in planets, stars, and laboratory experiments can be
+              generated through the motion of electrically conducting fluids. In the
+              <em>kinematic dynamo problem</em>, we assume the magnetic field is weak and therefore has no influence on the flow (no Lorentz force).
+              Our goal is to determine whether some velocity field \( \mathbf{u}(\mathbf{x},t)\) is capable of amplifying the magnetic field \( \mathbf{b}(\mathbf{x},t)\).              
             </p>
+          
+            <h3>Problem</h3>
+            <p>
+              The governing equations are the incompressible kinematic magnetohydrodynamic
+              (MHD) system:
+            </p>
+            <p>
+              \[ \nabla \cdot \mathbf{u} = 0\] 
+              <!-- \[ \partial_t \mathbf{u}\cdot\nabla = 0 \] -->
+            \[\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u} = - \nabla p + \frac{\mathbf{\hat{z}}\times\mathbf{u}}{\rm{Ro}} + \frac{1}{\rm{Re}} \nabla^2 \mathbf{u}\]
+              \[ \nabla \cdot \mathbf{b} = 0 \]
+              \[ \frac{\partial \mathbf{b}}{\partial t} = \nabla \times (\mathbf{u} \times \mathbf{b}) + \frac{1}{\rm{Rm}} \nabla^2 \mathbf{b},\]
+            </p>
+            <p>
+              <!-- where \( \mathbf{u}(\mathbf{x},t)\) is the unsteady Taylor-vortex flow and -->
+              <!-- \(\mathbf{b}(\mathbf{x},t)\) is the magnetic field.  -->
+              where we have nondimensionalized such that Ro, Re, and Rm respectively denote the viscous rotation time, viscous time, and ohmic diffusion time.
+              We choose Ro and Re such that \( \mathbf{u}(\mathbf{x},t)\) develops stable Taylor vortices which oscillate periodically in time. 
+              This Taylor-vortex flow models a rotating shear system such as <a href="https://en.wikipedia.org/wiki/Taylor%E2%80%93Couette_flow">Taylor–Couette flow</a>.
+              The central question is whether this flow sustains a
+              <strong>fast dynamo</strong>—one whose magnetic growth rate remains
+              \(\mathcal{O}(1)\) as \(\mathrm{Rm} \to \infty\).
+            </p>
+          
+            <h3>Solution</h3>
+            <p>
+              We compute the leading Floquet mode of the induction operator using the
+              power method implemented in the Dedalus pseudospectral
+              solver:
+            </p>
+            <ol>
+              <li>Integrate the induction equation forward from a seed magnetic field.</li>
+              <li>Normalize the field and record the amplification factor.</li>
+              <li>Iterate steps 1 and 2 until convergence.</li>
+            </ol>
+            <p>
+              This procedure allows us to compute the magnetic field's growth rate and Floquet mode.
+            </p>
+          
+            <h3>Results</h3>
+            <p>
+              The video below shows the converged Floquet mode. The left
+              panel is the streamwise component of the Taylor-vortex flow (\(u_y)\), and the
+              right panel is the streamwise magnetic field of the dominant Floquet mode (\(b_y)\). 
+              Our main finding is that the unsteady
+              Taylor-vortex dynamo <strong>is a fast dynamo</strong>: its magnetic growth
+              rate remains positive and finite as \( \mathrm{Rm} \to \infty \).
+            </p>
+
             <!-- <img src="state_3.png" width="600" class="center"><br><br> -->
             <!-- <img src="clean.gif" width="300" class="center"><br><br> -->
             <div style="text-align:center;">
