@@ -88,27 +88,27 @@ blockquote p:last-child {
 
 
 .bg-home {
-  background: url(C2301_Mellado_González_gray.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_default.png) center center no-repeat fixed;
   background-size: cover;
 }
 .bg-story {
-  background: url(C2301_Mellado_González_lime.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_lime.png) center center no-repeat fixed;
   background-size: cover;
 }
 .bg-convection {
-  background: url(C2301_Mellado_González_cyan.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_cyan.png) center center no-repeat fixed;
   background-size: cover;
 }
 .bg-optimization {
-  background: url(C2301_Mellado_González_purple.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_purple.png) center center no-repeat fixed;
   background-size: cover;
 }
 .bg-dynamos {
-  background: url(C2301_Mellado_González_invert.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_invert.png) center center no-repeat fixed;
   background-size: cover;
 }
 .bg-machine {
-  background: url(C2301_Mellado_González_yellow.png) center center no-repeat fixed;
+  background: url(media/C2301_Mellado_González_yellow.png) center center no-repeat fixed;
   background-size: cover;
 }
 
@@ -119,19 +119,7 @@ blockquote p:last-child {
   /* width: 90%; */
 }
 
-/**
- * Layout styles
- */
 
-/* Full size background image */
-
-/* html {
-  background:url(C2301_Mellado_González_yellow.png) center center no-repeat fixed;
-  /* background:url(C2301_Mellado_González_default.png) center center no-repeat fixed; */
-  /* background:url(ftle.png) center center no-repeat fixed; */
-  /* background:url(background.jpg) center center no-repeat fixed; */
-  /* background-size:cover; */
-/* }  */
 
 body {
   max-width:800px;
