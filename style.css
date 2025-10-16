@@ -91,31 +91,39 @@ body {
   background-size: cover;
 } */
 
-.bg-home {
-  background: url(media/C2301_Mellado_González_lavendar.png) center center no-repeat fixed;
-  /* background: url(media/compress_C2301_Mellado_González_default.png) center center no-repeat fixed; */
-  background-size: cover;
+/* Default background — shown before any class is added */
+:root {
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_lavendar.png");
 }
 
+/* Paint the background via a fixed pseudo-element */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--page-bg) center center / cover no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Per-page overrides — same scheme as before */
+.bg-home {
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_lavendar.png");
+}
 .bg-story {
-  background: url(media/C2301_Mellado_González_lime.png) center center no-repeat fixed;
-  background-size: cover;
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_lime.png");
 }
 .bg-convection {
-  background: url(media/C2301_Mellado_González_cyan.png) center center no-repeat fixed;
-  background-size: cover;
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_cyan.png");
 }
 .bg-optimization {
-  background: url(media/C2301_Mellado_González_purple.png) center center no-repeat fixed;
-  background-size: cover;
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_purple.png");
 }
 .bg-dynamos {
-  background: url(media/C2301_Mellado_González_invert.png) center center no-repeat fixed;
-  background-size: cover;
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_invert.png");
 }
 .bg-machine {
-  background: url(media/C2301_Mellado_González_yellow.png) center center no-repeat fixed;
-  background-size: cover;
+  --page-bg: url("./media/C2301_Mellado_Gonzalez_yellow.png");
 }
 
 .center {
