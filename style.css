@@ -86,12 +86,17 @@ blockquote p:last-child {
   margin-bottom: 0;  
 }
 
+body {
+  background: url(media/C2301_Mellado_González_lavendar.png) center center no-repeat fixed;
+  background-size: cover;
+}
 
 .bg-home {
   background: url(media/C2301_Mellado_González_lavendar.png) center center no-repeat fixed;
   /* background: url(media/compress_C2301_Mellado_González_default.png) center center no-repeat fixed; */
   background-size: cover;
 }
+
 .bg-story {
   background: url(media/C2301_Mellado_González_lime.png) center center no-repeat fixed;
   background-size: cover;
