@@ -234,11 +234,11 @@
 
             <h2>Background</h2>
             <p>
-              Large-scale magnetic fields in planets and stars are generated through the inductive motions of electrically conducting fluids. Earth's magnetic field shields our planet's fragile biosphere from the Sun's harmful radiation. The Sun's own magnetic field drives space weather, shaping events like solar flares and coronal mass ejections that can disrupt satellites, endanger astronauts, and damage power grids. By studying how dynamos generate and sustain magnetic fields, we aim to better understand these powerful cosmic forces.
+              Large-scale magnetic fields in planets and stars are generated through the inductive motions of electrically conducting fluids. Earth's magnetic field shields our planet's biosphere from the Sun's harmful radiation. The Sun's own magnetic field drives space weather, shaping events like solar flares and coronal mass ejections that can disrupt satellites, endanger astronauts, and damage power grids. By studying how dynamos generate and sustain magnetic fields, we aim to better understand these powerful cosmic forces.
               <br>
               <br>
               In the <em>kinematic</em> dynamo problem, we assume the magnetic field is weak and therefore has no influence on the flow (no Lorentz force).
-              In this case, our goal is to asses whether some velocity field \( \mathbf{u}(\mathbf{x},t)\) is capable of amplifying the magnetic field \( \mathbf{b}(\mathbf{x},t)\).              
+              In this case, our goal is to asses whether some velocity field \( \mathbf{u} \) is capable of amplifying the magnetic field \( \mathbf{b} \).              
               In contrast, the <em>nonlinear</em> dynamo problem accounts for the magnetic field's Lorentz force. Later, I will demonstrate how this Lorentz force causes the dynamo to saturate in various ways.
             </p>
           
@@ -257,19 +257,22 @@
               <!-- where \( \mathbf{u}(\mathbf{x},t)\) is the unsteady Taylor-vortex flow and -->
               <!-- \(\mathbf{b}(\mathbf{x},t)\) is the magnetic field.  -->
               where the Lorentz force is given by the term \( \mathbf{b} \cdot \nabla \mathbf{b}\ \). We have nondimensionalized these equations such that Ro, Re, and Rm respectively denote the rotation time, viscous time, and ohmic diffusion time.
-              We choose Ro and Re such that \( \mathbf{u}(\mathbf{x},t)\) develops stable Taylor vortices which oscillate periodically in time. 
+              We choose Ro and Re such that \( \mathbf{u}\) develops stable Taylor vortices which oscillate periodically in time. 
               This Taylor-vortex flow models a rotating shear system such as <a href="https://en.wikipedia.org/wiki/Taylor%E2%80%93Couette_flow">Taylor–Couette flow</a>.
               In the kinematic dynamo problem, we will asses whether the flow can sustain a <strong>fast dynamo</strong>—one whose magnetic growth rate remains \(\mathcal{O}(1)\) as \(\mathrm{Rm} \to \infty\). This limit is relevant to astrophysical systems where Rm is generally very large.
             </p>
           
             <h2>Solution</h2>
             <p>
+              To investigate the \(\mathrm{Rm} \to \infty\) limit, we consider a subspace of solutions in which the velocity field \( \mathbf{u}\) has three components which do not depend on the streamwise \( (y) \) coordinate, i.e. \( \mathbf{u}(x,z,t) \in \mathbb{R}^3 \). We make a similar approximation for the magnetic field: \( \mathbf{b}(x, y, z, t) = \Re\left[\mathbf{B}(x,z,t)\exp\left(i k_y y \right) \right]\) where \( \mathbf{B} \in \mathbb{C}^3\) and \( k_y \) denotes the streamwise wavenumber.
+
+              <br><br>
               For the kinematic system, we compute the leading Floquet mode of the induction operator using the
               power method implemented in the Dedalus pseudospectral solver.
               Using the power method, we integrate the kinematic (linear) equations until the magnetic field approaches a periodically amplified Floquet mode.
               This procedure allows us to compute the magnetic field's largest growth rate and dominant Floquet mode.
               <br><br>
-              We simulate the nonlinear dynamo by seeding the magnetic field with low-amplitude random noise. Initially, we observe a linear instability (just like in the kinematic problem) which ultimately saturates when the Lorentz force becomes dynamically important. 
+              We simulate the nonlinear dynamo by seeding the magnetic field with low-amplitude random noise. Initially, we observe a linear instability (just like in the kinematic problem) which ultimately saturates when the Lorentz force becomes dynamically important. To keep \( \mathbf{u}\) independent of \( y \), we use a quasilinear approximation to compute the Lorentz force.
             </p>
           
             <h2>Results</h2>
@@ -305,6 +308,8 @@
                 <source src="media/comp-sk45.mp4" type="video/mp4">
               </video>  
             </div>
+            <img src="media/sk_energies.png" width="400" class="center"><br><br>
+            <img src="media/sk_kemodes.png" width="400" class="center"><br><br>
           </div>
           
           <div id="machine-learning" class="content-region hide">
