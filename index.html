@@ -77,7 +77,7 @@
               <!-- As an NSF Graduate Research Fellow, I have the freedom to pursue research driven by curiosity and creativity. -->
               <!-- <br><br> -->
 
-              Explore the navigation menu above to learn more about me, my expertise, and the academic projects I’ve worked on.
+              Explore the navigation menu above to learn more about me, my expertise, and the academic projects I've worked on.
               <!-- My research is focused on using physics-based simulations Astrophysical -->
             </p>
           </div>
@@ -94,9 +94,9 @@
             <p>
               <br> 
               My juggling journey began over a decade ago at the University of Colorado Boulder, where I first caught the juggling bug from someone in my dorm. 
-              Since then, I’ve been entirely self-taught, never taking formal lessons and only recently joining the 
+              Since then, I've been entirely self-taught, never taking formal lessons and only recently joining the 
               <a href="https://www.jugglingedge.com/club.php?ClubID=1362">Chicago Juggling Club</a>.
-              I’m currently “fluent” with five balls and four clubs (shown above).
+              I'm currently “fluent” with five balls and four clubs (shown above).
               I especially enjoy juggling at concerts and in public spaces, where it becomes both a personal challenge and a way to spread the joy. 
               <br> 
               <br> 
@@ -232,53 +232,47 @@
           <div id="dynamos" class="content-region hide">
             <!-- <h2>Dynamos</h2> -->
 
-            <h3>Background</h3>
+            <h2>Background</h2>
             <p>
-              Magnetic fields in planets, stars, and laboratory experiments can be
-              generated through the motion of electrically conducting fluids. In the
-              <em>kinematic dynamo problem</em>, we assume the magnetic field is weak and therefore has no influence on the flow (no Lorentz force).
-              Our goal is to determine whether some velocity field \( \mathbf{u}(\mathbf{x},t)\) is capable of amplifying the magnetic field \( \mathbf{b}(\mathbf{x},t)\).              
+              Large-scale magnetic fields in planets and stars are generated through the inductive motions of electrically conducting fluids. Earth's magnetic field shields our planet's fragile biosphere from the Sun's harmful radiation. The Sun's own magnetic field drives space weather, shaping events like solar flares and coronal mass ejections that can disrupt satellites, endanger astronauts, and damage power grids. By studying how dynamos generate and sustain magnetic fields, we aim to better understand these powerful cosmic forces.
+              <br>
+              <br>
+              In the <em>kinematic</em> dynamo problem, we assume the magnetic field is weak and therefore has no influence on the flow (no Lorentz force).
+              In this case, our goal is to asses whether some velocity field \( \mathbf{u}(\mathbf{x},t)\) is capable of amplifying the magnetic field \( \mathbf{b}(\mathbf{x},t)\).              
+              In contrast, the <em>nonlinear</em> dynamo problem accounts for the magnetic field's Lorentz force. Later, I will demonstrate how this Lorentz force causes the dynamo to saturate in various ways.
             </p>
           
-            <h3>Problem</h3>
+            <h2>Problem</h2>
             <p>
-              The governing equations are the incompressible kinematic magnetohydrodynamic
-              (MHD) system:
+              We define the rotating incompressible magnetohydrodynamic (MHD) system:
             </p>
             <p>
               \[ \nabla \cdot \mathbf{u} = 0\] 
               <!-- \[ \partial_t \mathbf{u}\cdot\nabla = 0 \] -->
-            \[\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u} = - \nabla p + \frac{\mathbf{\hat{z}}\times\mathbf{u}}{\rm{Ro}} + \frac{1}{\rm{Re}} \nabla^2 \mathbf{u}\]
+            \[\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u} = - \nabla p + \frac{\mathbf{\hat{z}}\times\mathbf{u}}{\rm{Ro}} + \frac{1}{\rm{Re}} \nabla^2 \mathbf{u} + \mathbf{b} \cdot \nabla \mathbf{b}\]
               \[ \nabla \cdot \mathbf{b} = 0 \]
               \[ \frac{\partial \mathbf{b}}{\partial t} = \nabla \times (\mathbf{u} \times \mathbf{b}) + \frac{1}{\rm{Rm}} \nabla^2 \mathbf{b},\]
             </p>
             <p>
               <!-- where \( \mathbf{u}(\mathbf{x},t)\) is the unsteady Taylor-vortex flow and -->
               <!-- \(\mathbf{b}(\mathbf{x},t)\) is the magnetic field.  -->
-              where we have nondimensionalized such that Ro, Re, and Rm respectively denote the viscous rotation time, viscous time, and ohmic diffusion time.
+              where the Lorentz force is given by the term \( \mathbf{b} \cdot \nabla \mathbf{b}\ \). We have nondimensionalized these equations such that Ro, Re, and Rm respectively denote the rotation time, viscous time, and ohmic diffusion time.
               We choose Ro and Re such that \( \mathbf{u}(\mathbf{x},t)\) develops stable Taylor vortices which oscillate periodically in time. 
               This Taylor-vortex flow models a rotating shear system such as <a href="https://en.wikipedia.org/wiki/Taylor%E2%80%93Couette_flow">Taylor–Couette flow</a>.
-              The central question is whether this flow sustains a
-              <strong>fast dynamo</strong>—one whose magnetic growth rate remains
-              \(\mathcal{O}(1)\) as \(\mathrm{Rm} \to \infty\).
+              In the kinematic dynamo problem, we will asses whether the flow can sustain a <strong>fast dynamo</strong>—one whose magnetic growth rate remains \(\mathcal{O}(1)\) as \(\mathrm{Rm} \to \infty\). This limit is relevant to astrophysical systems where Rm is generally very large.
             </p>
           
-            <h3>Solution</h3>
+            <h2>Solution</h2>
             <p>
-              We compute the leading Floquet mode of the induction operator using the
-              power method implemented in the Dedalus pseudospectral
-              solver:
-            </p>
-            <ol>
-              <li>Integrate the induction equation forward from a seed magnetic field.</li>
-              <li>Normalize the field and record the amplification factor.</li>
-              <li>Iterate steps 1 and 2 until convergence.</li>
-            </ol>
-            <p>
-              This procedure allows us to compute the magnetic field's growth rate and Floquet mode.
+              For the kinematic system, we compute the leading Floquet mode of the induction operator using the
+              power method implemented in the Dedalus pseudospectral solver.
+              Using the power method, we integrate the kinematic (linear) equations until the magnetic field approaches a periodically amplified Floquet mode.
+              This procedure allows us to compute the magnetic field's largest growth rate and dominant Floquet mode.
+              <br><br>
+              We simulate the nonlinear dynamo by seeding the magnetic field with low-amplitude random noise. Initially, we observe a linear instability (just like in the kinematic problem) which ultimately saturates when the Lorentz force becomes dynamically important. 
             </p>
           
-            <h3>Results</h3>
+            <h2>Results</h2>
             <img src="media/gr_plot.png" width="400" class="center"><br><br>
             <p>
               The video below shows the converged Floquet mode. The left
