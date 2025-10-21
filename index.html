@@ -47,9 +47,9 @@
       <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
       <ul class="main-menu">
         <li><a href="#home" data-bg="bg-home">home</a></li>
+        <li><a href="#dynamos"  data-bg="bg-dynamos">dynamos</a></li>
         <li><a href="#convection"  data-bg="bg-convection">convection</a></li>
         <li><a href="#optimization"  data-bg="bg-optimization">optimization</a></li>
-        <li><a href="#dynamos"  data-bg="bg-dynamos">dynamos</a></li>
         <li><a href="#machine-learning"  data-bg="bg-machine">machine learning</a></li>
         <li><a href="#juggling"  data-bg="bg-story">juggling</a></li>
         <!-- <li><a href="#contact">contact</a></li> -->
@@ -77,7 +77,7 @@
               <!-- As an NSF Graduate Research Fellow, I have the freedom to pursue research driven by curiosity and creativity. -->
               <!-- <br><br> -->
 
-              Explore the navigation menu above to learn more about me, my expertise, and the academic projects I've worked on.
+              Explore the navigation menu above to learn more about me and my projects.
               <!-- My research is focused on using physics-based simulations Astrophysical -->
             </p>
           </div>
@@ -89,7 +89,7 @@
                 <source src="media/juggle.mp4" type="video/mp4">
               </video>  
             </div>
-    
+            
             <!-- <h2>About</h2> -->
             <p>
               <br> 
@@ -99,13 +99,18 @@
               I'm currently “fluent” with five balls and four clubs (shown above).
               I especially enjoy juggling at concerts and in public spaces, where it becomes both a personal challenge and a way to spread the joy. 
               <br> 
+              <div style="text-align:center;">
+                <video autoplay muted loop playsinline preload="auto" controls width="300">
+                  <source src="media/fire.mp4" type="video/mp4">
+                </video>  
+              </div>
               <br> 
               
-              Juggling taps into the dynamic part of my mind while sharpening my focus and creativity. 
+              <!-- Juggling taps into the dynamic part of my mind while sharpening my focus and creativity. 
               
 
               Throughout this journey, I've learned that the only way to improve is to make mistakes.
-              In these ways, juggling has helped me maintain balance throughout life and graduate school.
+              In these ways, juggling has helped me maintain balance throughout life and graduate school. -->
 
             </p>
         
@@ -144,7 +149,7 @@
           </p>
           <h2>Solution</h2>
         <p>
-          We can reduce the dimensionality of (and thereby simplify) the convection problem by making the quasilinear approximation.
+          We can reduce the dimensionality of the convection problem by making the quasilinear approximation.
           To construct a quasilinear model, consider the temperature's horizontal average \( \overline{T}(z) \) which only depends on the vertical coordinate \( z \). 
           The original temperature field \( T \) can then be expressed as \( T(x, z, t) = \overline{T}(z) + T'(x, z, t) \) where \( T' \) is called the temperature perturbation.
           Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \mathbf{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
@@ -155,12 +160,7 @@
           
           <h2>Results</h2>
         <p>
-          To construct a quasilinear model, consider the temperature's horizontal average \( \overline{T}(z) \) which only depends on the vertical coordinate \( z \). 
-          The original temperature field \( T \) can then be expressed as \( T(x, z, t) = \overline{T}(z) + T'(x, z, t) \) where \( T' \) is called the temperature perturbation.
-          Next, we approximate the temperature and velocity perturbations (\( T' \) and \( \mathbf{u}' \)) by solving a linear eigenvalue problem involving \( \overline{T} \).
-          To approximate an equilibrated convective system, we apply the "marginal stability" constraint such that the maximum eigenvalue \( \rm{max}\{ \sigma \} = 0 \).
-          Finally, we iteratively update \( \overline{T} \) using a quasilinear equation involving the linear perturbations (\( T' \) and \( \mathbf{u}' \)) until convergence.
-          The converged \( \overline{T} \) is called a Marginally Stable Thermal Equilibrium (MSTE).
+          In the figure below, we show the Nusselt number \(\rm{Nu}\)—a standard measure of convective heat transport efficiency—as a function of the Rayleigh number \(\rm{Ra}\). Compared with previous simulations, the MSTE model predicts consistently higher \(\rm{Nu}\). Our results follow the “classical” (Malkus) scaling, with \( \rm{Nu}\sim\rm{Ra}^{1/3}\).
           
           <!-- This is known as "marginal " -->
         </p>
@@ -276,48 +276,85 @@
             </p>
           
             <h2>Results</h2>
+            For three wavenumbers (\( k_y = 0.18, \; 0.29, \; 1.0 \)), we plot the growth rate of the dominant Floquet mode as a function of Rm below. In all three cases, we find the growth rate approaches a positive finite constant as \(\mathrm{Rm} \to \infty\). These results suggest the unsteady Taylor-vortex dynamo <strong>is a fast dynamo</strong>. 
+            <br>
+            <br>
+            Circular markers indicate cases in which the modes evolve with twice the period of the background flow. Triangles mark modes with the same period as the flow, while stars denote quasiperiodic behavior.
+            <br>
+            <br>
             <img src="media/gr_plot.png" width="400" class="center"><br><br>
-            <p>
-              The video below shows the converged Floquet mode. The left
-              panel is the streamwise component of the Taylor-vortex flow (\(u_y)\), and the
-              right panel is the streamwise magnetic field of the dominant Floquet mode (\(b_y)\). 
-              Our main finding is that the unsteady
-              Taylor-vortex dynamo <strong>is a fast dynamo</strong>: its magnetic growth
-              rate remains positive and finite as \( \mathrm{Rm} \to \infty \).
-            </p>
-
+            
             <!-- <img src="state_3.png" width="600" class="center"><br><br> -->
             <!-- <img src="clean.gif" width="300" class="center"><br><br> -->
             <h3>Small-Scale (Kinematic) Dynamo</h3>
+            <p>
+              The video below shows the converged Floquet mode for \(k_y=1.0\) and Rm \(=\) 1,500. The left
+              panel is the streamwise component of the Taylor-vortex flow (\(u_y)\), and the
+              right panel is the streamwise magnetic field of the dominant Floquet mode (\(b_y)\). This case has a small-scale spatial structure with a short period of \(T=23.33\).
+            </p>
             <div style="text-align:center;">
               <video autoplay muted loop playsinline preload="auto" controls width="400">
                 <source src="media/Rm1p5e3.mp4" type="video/mp4">
               </video>  
             </div> 
-            <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+            <br>
+            <br>
             <h3>Large-Scale (Kinematic) Dynamo</h3>
+            <p>
+              This next video shows the converged Floquet mode for \(k_y=0.18\) and Rm \(=\) 15,000. We observe subharmonic spatial structure in the \(z\) direction where the magnetic Floquet mode spans the length of two vortex-pairs. This mode has a period of \(T=46.66\), meaning it exhibits subharmonic temporal structure.
+            </p>
+            <br>
             <div style="text-align:center;">
               <video autoplay muted loop playsinline preload="auto" controls width="400">
                 <source src="media/Rm1p5e4.mp4" type="video/mp4">
               </video>  
+            </div>            
+            <br>
+            <br>
+            <h3>Oscillatory (Nonlinear) Dynamo</h3>
+            <p>
+              Now we include the Lorentz force such that dynamo saturates after its initial exponential growth phase. At \(k_y=1.0\) and Rm \(=\) 3,000, the dynamo undergoes relaxation oscillations where the magnetic energy grows and decays over long timescales as shown in the figure below.
+            </p>
+            <img src="media/osc_energies.png" width="400" class="center"><br><br>
+            <div style="text-align:center;">
+              <video autoplay muted loop playsinline preload="auto" controls width="400">
+                <source src="media/osc_comp.mp4" type="video/mp4">
+              </video>  
             </div>
-            <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>            
+            <br>
+            <br>
             <h3>Self-Killing (Nonlinear) Dynamo</h3>
+            <p>
+              In this case, we maintain \(k_y=1.0\) and increase Rm \(=\) 5,000. After a single oscillation of the magnetic energy, the Lorentz force rearranges the flow toward a steady state with a single vortex pair. The new state does not produce dynamo action. This is known as a "self-killing dynamo".
+            </p>
+            <img src="media/sk_energies.png" width="400" class="center"><br><br>
             <div style="text-align:center;">
               <video autoplay muted loop playsinline preload="auto" controls width="400">
                 <source src="media/comp-sk45.mp4" type="video/mp4">
               </video>  
             </div>
-            <img src="media/sk_energies.png" width="400" class="center"><br><br>
-            <img src="media/sk_kemodes.png" width="400" class="center"><br><br>
+            <!-- <img src="media/sk_kemodes.png" width="400" class="center"><br><br> -->
           </div>
           
           <div id="machine-learning" class="content-region hide">
-            <h2>Machine Learning</h2>
+            <h2>Background</h2>
             <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
+              The Rayleigh–Taylor instability is a fundamental fluid-dynamical process that generates rich, nonlinear structure from simple initial conditions. Developing fast, data-driven models for such systems could enable rapid prediction, control, and exploration beyond what is possible with traditional simulations.
             </p>
-            <img src="media/summary1.png" width="600" class="center"><br><br>
+            <h2>Problem</h2>
+            <p>
+              We consider the problem of predicting the nonlinear evolution of the Rayleigh–Taylor instability from its initial state. Using the Boussinesq approximation, we generate a large set of direct numerical simulations initialized with random perturbations and evolve them from \(t=0\) to \(t=5\). The goal is to learn the mapping from initial conditions to the evolved flow state using these simulation data.
+            </p>
+            <h2>Solution</h2>
+            <p>
+              We construct a convolutional neural network (CNN) autoencoder to learn the nonlinear mapping from initial to evolved buoyancy fields. The model takes the buoyancy field at \(t=0\) as input, compresses it into a low-dimensional latent representation, and reconstructs the predicted buoyancy field at \(t=5\). By minimizing the squared error between these predictions and the simulation results, the network learns to approximate the dynamics of the Rayleigh–Taylor instability. 
+            </p>
+            <img src="media/cnn.png" width="500" class="center"><br><br>
+            <h2>Results</h2>
+            <p>
+              In the figure below, we present a validation example not included in the training set. We compare the initial buoyancy field, the true evolved state from direct numerical simulation, and the autoencoder's prediction, demonstrating that the CNN model captures the key features of the nonlinear evolution.
+            </p>
+            <img src="media/summary3.png" width="400" class="center"><br><br>
           </div>
           
           <div id="contact" class="content-region hide">
